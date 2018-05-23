@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      GeoData
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label>Selecione o continente:</ion-label>
+    <ion-select>
+      <ion-option selected>Todos</ion-option>
+      <ion-option>Asia</ion-option>
+      <ion-option>Africa</ion-option>
+      <ion-option>America</ion-option>
+      <ion-option>Europa</ion-option>
+      <ion-option>Oceania</ion-option>
+    </ion-select>
+
+  </ion-item>
+  <button ion-button block (click)="searchCountry()">Buscar</button>
+</ion-content>
