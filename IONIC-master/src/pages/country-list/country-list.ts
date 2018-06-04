@@ -1,34 +1,33 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CountryDetailPage } from '../country-detail/country-detail';
-
-/**
- * Generated class for the CountryListPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Country } from '../../model/country';
+import { CountryProvider } from '../../providers/country/country';
 
 @IonicPage()
 @Component({
   selector: 'page-country-list',
   templateUrl: 'country-list.html',
+  providers: [
+    CountryProvider
+  ]
 })
 export class CountryListPage {
-  public country: any;
+  public countries: Country[];
+  public continent: string;
+  public country: Country;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.country = {name: "Brazil"}
-    console.log(this.country);
+  constructor(public navCtrl: NavController, public navParams: NavParams, private countryProvider: CountryProvider) {
+    this.continent = navParams.get("continent");
+    this.countryProvider.getCountries(this.continent).subscribe(
+      response => {
+        this.countries = response;
+      }
+    );
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CountryListPage');
-  }
-
-  public showDetails(name: string) {
-    console.log(`Nome: ${name}`)
-    this.navCtrl.push(CountryDetailPage);
+  public details(country: Country) {
+    this.navCtrl.push(CountryDetailPage, {country: country});
   }
 
 }

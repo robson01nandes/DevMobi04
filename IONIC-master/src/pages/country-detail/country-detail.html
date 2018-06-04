@@ -7,19 +7,20 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Detalhes</ion-title>
+    <ion-title>{{country.name}} Informações</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list>
-    <ion-item>
-      <p><strong>Brazil</strong></p>
-      <img src="../../assets/imgs/brazil-flag.png" alt="Brazil">
-    </ion-item>
+  <ion-card>
+    <img src="../../assets/imgs/{{country.alpha3Code}}.png" alt="{{country.name}}">
+    <ion-card-content>
+      <p>Name: <strong>{{country.name}}</strong></p>
+      <p>Area: <strong>{{country.area}} km²</strong></p>
+      <p>Population: <strong>{{country.population}} hab/km²</strong></p>
+    </ion-card-content>
 
-  </ion-list>
-
+  </ion-card>
 </ion-content>
